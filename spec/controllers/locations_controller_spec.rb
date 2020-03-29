@@ -18,7 +18,7 @@ RSpec.describe LocationsController, type: :controller do
       post :create, params: { user_id: user.id, location: build(:location, creator: user).attributes }
       
       expect(assigns(:location)).to be_present
-      expect(response).to redirect_to(user_locations_path(user, assigns[:location]))
+      expect(response).to redirect_to(assigns[:location])
       expect(flash[:notice]).to eq('Location was successfully created.')
     end
 

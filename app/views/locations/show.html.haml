@@ -16,6 +16,9 @@
 %p
   %strong State:
   = @location.state
+- @location.images.each do |img|
+  %p
+    = image_tag img  
 
 %h4 Comments
 %ul.list-group

@@ -8,19 +8,19 @@
         - @event.errors.full_messages.each do |message|
           %li= message
   .form-group
-    = form.label :name
+    = form.label 'name *'
     = form.text_field :name, class: 'form-control'
   .form-group  
-    = form.label :start_at
+    = form.label 'Start at *'
     = form.datetime_field :start_at, class: 'form-control'
   .form-group  
-    = form.label :end_at
+    = form.label 'End at *'
     = form.datetime_field :end_at, class: 'form-control'
   .form-group  
     = form.label :description
     = form.text_area :description, class: 'form-control'
   .form-group  
-    = form.label :locations
+    = form.label 'Location *'
     = select("event", "location_id", current_user.locations.all.collect {|p| [ p.name, p.id ] }, { include_blank: true }, class: "form-control")  
   .form-group  
     = form.label :images

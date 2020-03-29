@@ -8,7 +8,7 @@
         - @location.errors.full_messages.each do |message|
           %li= message
   .form-group
-    = form.label :name
+    = form.label 'Name *'
     = form.text_field :name, class: 'form-control'        
   .form-group
     = form.label :lat
@@ -17,19 +17,19 @@
     = form.label :lng
     = form.text_field :lng, class: 'form-control'
   .form-group
-    = form.label :country
+    = form.label 'Country *'
     = form.text_field :country, class: 'form-control'
   .form-group
-    = form.label :state
+    = form.label 'State *'
     = form.text_field :state, class: 'form-control'
   .form-group
-    = form.label :city
+    = form.label 'State *'
     = form.text_field :city, class: 'form-control'
   .form-group
-    = form.label :zipcode
+    = form.label 'Zipcode *'
     = form.text_field :zipcode, class: 'form-control'
   .form-group
-    = form.label :address_line_1
+    = form.label 'Address Line 1 *'
     = form.text_field :address_line_1, class: 'form-control'
   .form-group
     = form.label :address_line_2

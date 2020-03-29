@@ -1,8 +1,6 @@
-%p#notice= notice
 - if policy(@event).create?
-  %p
-    %strong
-    = link_to 'Send Invitation', new_event_invitation_path(@event), class: 'btn btn-primary'
+  = link_to 'Send Invitation', new_event_invitation_path(@event), class: 'btn btn-success float-right'
+  = link_to 'Edit', edit_event_path(@event), class: 'btn btn-primary'
 %p
   %strong Name:
   = @event.name
