@@ -18,12 +18,12 @@
                   = link_to 'Edit', edit_event_path(event), class: 'btn btn-sm btn-outline-secondary'
               - if current_user
                 .row.ml-auto.m-2
-                  = link_to like_event_path(event), method: :put , remote: :true, class: 'col-6' do
+                  = link_to like_event_rates_path(event), method: :post , remote: :true, class: 'col-6' do
                     .text-center.row
                       .fas.fa-thumbs-up.text-success.mt-1
                       %div{:id => "like-count-#{event.id}"}
                         = event.get_upvotes.size
-                  = link_to unlike_event_path(event), method: :put , remote: :true, class: 'col-6' do
+                  = link_to unlike_event_rates_path(event), method: :post , remote: :true, class: 'col-6' do
                     .text-center.row
                       .fas.fa-thumbs-down.text-secondary.mt-1
                       %div{:id => "unlike-count-#{event.id}"}

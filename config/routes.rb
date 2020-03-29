@@ -9,11 +9,15 @@ Rails.application.routes.draw do
     resources :locations do
       resources :comments
     end
+    
     resources :events do
-      member do
-        put 'like' => 'events#like'
-        put 'unlike' => 'events#unlike'
+      resources :rates, only: [] do
+        collection do
+          post :like
+          post :unlike
+        end  
       end
+        
       resources :comments
     end
   end
