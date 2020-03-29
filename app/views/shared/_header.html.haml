@@ -5,6 +5,13 @@
   - if current_user
     = link_to 'Locations', user_locations_path(current_user), class: 'p-2 text-dark'
     = link_to 'Events', user_events_path(current_user), class: 'p-2 text-dark'
+    %div.nav-item.dropdown
+      %a#navbarDropdown.nav-link.dropdown-toggle.p-2.text-dark{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+        Invitations
+      .dropdown-menu{"aria-labelledby" => "navbarDropdown"}
+        %a.dropdown-item{:href => sent_invitations_invitations_path} Sent
+        %a.dropdown-item{:href => receive_invitations_invitations_path} Recieved
+
   -if current_user
     = link_to('Logout', destroy_user_session_path, method: :delete)    
   - else
