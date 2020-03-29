@@ -7,6 +7,8 @@ class CreateEvents < ActiveRecord::Migration[6.0]
       t.integer :status, default: 1
       t.references :user, index: true
       t.references :location, index: true
+      t.text :description
+      t.string :image
 
       t.timestamps
     end

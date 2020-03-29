@@ -1,0 +1,27 @@
+%p#notice= notice
+- if policy(@event).create?
+  %p
+    %strong
+    = link_to 'Send Invitation', new_event_invitation_path(@event), class: 'btn btn-primary'
+%p
+  %strong Name:
+  = @event.name
+%p
+  %strong Start at:
+  = @event.start_at
+%p
+  %strong End at:
+  = @event.end_at
+%p
+  %strong Location:
+  = @event.location.full_address
+%p
+  %strong Creator:
+  = @event.creator.email
+- @event.images.each do |image|
+  %p
+    = image_tag image
+%h4 Comments
+%ul.list-group
+  = render @event.comments
+= render partial: "comments/form", locals: {commentable: @event}

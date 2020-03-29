@@ -1,0 +1,23 @@
+= link_to 'Edit', edit_location_path(@location), class: "btn btn-primary float-right"
+= link_to 'Back', user_locations_path(current_user), class: "btn btn-success"
+
+%p
+  %strong Name:
+  = @location.name
+%p
+  %strong Lat:
+  = @location.lat
+%p
+  %strong Lng:
+  = @location.lng
+%p
+  %strong Country:
+  = @location.country  
+%p
+  %strong State:
+  = @location.state
+
+%h4 Comments
+%ul.list-group
+  = render @location.comments
+= render partial: "comments/form", locals: {commentable: @location}
