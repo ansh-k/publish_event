@@ -1,6 +1,6 @@
 unless User.all.exists?
 	
-	creator = FactoryBot.create(:user)
+	creator = FactoryBot.create(:user, email: 'test@publishevents.com')
 	users = FactoryBot.create_list(:user, 15)
 	locations = FactoryBot.create_list(:location, 5, creator: creator)
 	events = FactoryBot.create_list(:event, 50, creator: creator, location: locations.sample)
@@ -15,7 +15,7 @@ end
 puts 'Data Successfully created!'
 puts '==============================='
 puts 'Login with cred.'
-puts creator.email
+puts 'test@publishevents.com'
 puts 'password:'
 puts '123456'
 

@@ -7,7 +7,6 @@ class Event < ApplicationRecord
   has_many_attached :images
   accepts_nested_attributes_for :invitations, reject_if: proc { |attributes| attributes['receiver_id'].blank? }
 
-  ratyrate_rateable 'location_wise', 'timing_wise'
   acts_as_votable
   
 

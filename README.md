@@ -31,6 +31,10 @@ Things you may want to cover:
 * rake db:migrate
 * rake db:seed
 
+-Seed User 
+* Email: 'test@publishevents.com'
+* Password: '123456'
+
 
 # How to run the test suite
 * RAILS_ENV=test rake db:create

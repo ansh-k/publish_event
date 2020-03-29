@@ -11,6 +11,5 @@ class User < ApplicationRecord
   has_many :sent_invitations, class_name: 'Invitation', foreign_key: :sender_id
   has_many :received_invitations, class_name: 'Invitation', foreign_key: :receiver_id
 
-  ratyrate_rater
   acts_as_voter
 end
