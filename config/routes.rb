@@ -10,12 +10,16 @@ Rails.application.routes.draw do
       resources :comments
     end
     resources :events do
+      member do
+        put 'like' => 'events#like'
+        put 'unlike' => 'events#unlike'
+      end
       resources :comments
     end
   end
 
-  resources :locations , only: [:show, :index]
-  resources :invitations, only: [:show, :index] do
+  resources :locations, only: %i[show index]
+  resources :invitations, only: %i[show index] do
     collection do
       get :sent_invitations
       get :receive_invitations

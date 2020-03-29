@@ -2,7 +2,8 @@
 
 class EventsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_event, only: %i[edit update destroy]
+  before_action :set_user_event, only: %i[edit update destroy]
+  before_action :set_event, only: %i[like unlike]
 
   def index
     @events = current_user.events.paginate(page: params[:page], per_page: 10)
@@ -56,10 +57,24 @@ class EventsController < ApplicationController
     end
   end
 
+  def like
+    @event.upvote_from current_user
+    render layout: false
+  end
+
+  def unlike
+    @event.downvote_from current_user
+    render layout: false
+  end
+
   private
 
-  def set_event
+  def set_user_event
     @event = current_user.events.find(params[:id])
+  end
+
+  def set_event
+    @event = Event.find(params[:id])
   end
 
   def event_params

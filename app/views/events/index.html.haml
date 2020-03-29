@@ -16,14 +16,30 @@
               - if policy(event).edit?
                 .btn-group.pb-2
                   = link_to 'Edit', edit_event_path(event), class: 'btn btn-sm btn-outline-secondary'
-                .star
-                  %strong 
-                    Review Score:
-                    = rating_for event, "location_wise", disable_after_rate: true, imdb_avg: true
-                  %strong 
-                    Review Score:
-                    = rating_for event, "timing_wise", disable_after_rate: true, imdb_avg: true
-                    = imdb_style_rating_for event, current_user   
+              - if current_user
+                .row.ml-auto.m-2
+                  = link_to like_event_path(event), method: :put , remote: :true, class: 'col-6' do
+                    .text-center.row
+                      .fas.fa-thumbs-up.text-success.mt-1
+                      %div{:id => "like-count-#{event.id}"}
+                        = event.get_upvotes.size
+                  = link_to unlike_event_path(event), method: :put , remote: :true, class: 'col-6' do
+                    .text-center.row
+                      .fas.fa-thumbs-down.text-secondary.mt-1
+                      %div{:id => "unlike-count-#{event.id}"}
+                        = event.get_downvotes.size
+              - else
+                .row.ml-auto.m-2
+                  .col-6
+                    .text-center.row
+                      .fas.fa-thumbs-up.text-success.mt-1
+                      #like-count
+                        = event.get_upvotes.size
+                  .col-6
+                    .text-center.row
+                      .fas.fa-thumbs-down.text-secondary.mt-1
+                      #unlike-count
+                        = event.get_downvotes.size
                  
             .card-footer.bg-transparent
               = link_to event.location.name, location_path(event.location)
