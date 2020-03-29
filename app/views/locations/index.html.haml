@@ -28,8 +28,8 @@
         %td= location.zipcode
         %td= location.address_line_1
         %td= location.address_line_2
-        %td= location.creater.email
+        %td= location.creator.email
         %td= link_to 'Show', location
         %td= link_to 'Edit', edit_location_path(location)
         %td= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' }
-%br/
+= will_paginate @locations

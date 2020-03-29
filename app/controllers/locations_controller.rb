@@ -3,7 +3,7 @@ class LocationsController < ApplicationController
   before_action :set_location, only: [:edit, :update, :destroy]
 
   def index
-    @locations = current_user.locations.paginate(page: params[:page], per_page: 30)
+    @locations = current_user.locations.paginate(page: params[:page], per_page: 5)
   end
 
   def show
@@ -15,6 +15,7 @@ class LocationsController < ApplicationController
   end
 
   def edit
+    authorize @location
   end
 
   def create
@@ -67,6 +68,7 @@ class LocationsController < ApplicationController
         :zipcode,
         :address_line_1,
         :address_line_2,
+        :user_id,
         images: []
       )
     end

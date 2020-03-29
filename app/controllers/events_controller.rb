@@ -5,7 +5,7 @@ class EventsController < ApplicationController
   before_action :set_event, only: %i[edit update destroy]
 
   def index
-    @events = current_user.events.paginate(page: params[:page], per_page: 30)
+    @events = current_user.events.paginate(page: params[:page], per_page: 10)
   end
 
   def show

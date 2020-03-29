@@ -1,16 +1,16 @@
 class InvitationPolicy < ApplicationPolicy
-  attr_reader :user, :object
+  attr_reader :user, :record
 
-  def initialize(user, event)
+  def initialize(user, record)
     @user = user
-    @object = object
+    @record = record
   end
 
   def new?
-     @user === @object.create
+     @user === @record.create
   end
 
-  def confirm
-  	@user === @object.receiver && @object.event.start_at <= Time.now
+  def confirm?
+  	@user === @record.receiver && @record.event.start_at.to_i >= Time.now.to_i
   end
 end

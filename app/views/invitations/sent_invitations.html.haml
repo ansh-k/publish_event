@@ -17,7 +17,7 @@
         %th
           = invitation.id
         %td
-          = link_to invitation.event.name, user_events_path(current_user, invitation.event)
+          = link_to invitation.event.name, event_path(invitation.event)
         %td
           = invitation.event.start_at
         %td
@@ -30,4 +30,4 @@
           = invitation.confirm_at
         %td
           = invitation.event.location.full_address  
-     
+= will_paginate @invitations

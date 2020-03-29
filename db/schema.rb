@@ -64,17 +64,12 @@ ActiveRecord::Schema.define(version: 2020_03_28_143130) do
     t.integer "status", default: 1
     t.bigint "user_id"
     t.bigint "location_id"
+    t.text "description"
+    t.string "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["location_id"], name: "index_events_on_location_id"
     t.index ["user_id"], name: "index_events_on_user_id"
-  end
-
-  create_table "images", force: :cascade do |t|
-    t.bigint "imageable_id"
-    t.string "imageable_type"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "invitations", force: :cascade do |t|
@@ -101,6 +96,7 @@ ActiveRecord::Schema.define(version: 2020_03_28_143130) do
     t.string "zipcode"
     t.string "address_line_1"
     t.string "address_line_2"
+    t.text "description"
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

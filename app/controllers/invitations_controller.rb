@@ -24,25 +24,25 @@ class InvitationsController < ApplicationController
   end
 
   def sent_invitations
-    @invitations = current_user.sent_invitations
+    @invitations = current_user.sent_invitations.paginate(page: params[:page], per_page: 5)
   end
 
   def receive_invitations
-    @invitations = current_user.received_invitations
+    @invitations = current_user.received_invitations.paginate(page: params[:page], per_page: 5)
   end
 
   def confirm
     @invitation = Invitation.find_by_token(params[:token])
     authorize @invitation
 
-    respond_to do |format|
-      if @invitation&.update(confirm: true, confirm_at: Time.now)
-        format.html { redirect_to root_path, notice: 'Thanks for confirming!.' }
-      else
-        format.html { redirect_to root_path, notice: 'Unauthrize token.' }
-      end
-    end
-  end
+		respond_to do |format|
+	    if @invitation && @invitation.update(confirm: true, confirm_at: Time.now)
+	      format.html { redirect_to receive_invitations_invitations_path, notice: 'Thanks for confirming!.' }
+	    else
+	      format.html { redirect_to root_path, notice: 'Unauthrize token.' }
+	    end
+	  end  
+	end
 
   private
 

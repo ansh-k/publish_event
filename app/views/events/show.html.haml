@@ -14,7 +14,7 @@
   = @event.end_at
 %p
   %strong Location:
-  = @event.location.full_address
+  = link_to @event.location.full_address, location_path(@event.location)
 %p
   %strong Creator:
   = @event.creator.email

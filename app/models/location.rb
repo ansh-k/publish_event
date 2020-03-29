@@ -1,6 +1,6 @@
 class Location < ApplicationRecord
 
-  belongs_to :creater, class_name: :User, foreign_key: :user_id
+  belongs_to :creator, class_name: :User, foreign_key: :user_id
   has_many :comments, as: :commentable
   has_many_attached :images
 
@@ -16,6 +16,6 @@ class Location < ApplicationRecord
 
 
   def full_address
-    [country, state, city, address_line_1, address_line_2].compact.join(', ')
+    [country, state, city, zipcode, address_line_1, address_line_2].compact.join(', ')
   end
 end
