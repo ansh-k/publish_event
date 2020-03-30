@@ -9,12 +9,12 @@ module VotingController
 
   def like
     @object.upvote_from current_user
-    render layout: false, partial: 'shared/like.js.haml'
+    render layout: false, partial: 'shared/like_unlike.js.haml'
   end
 
   def unlike
     @object.downvote_from current_user
-    render layout: false, partial: 'shared/unlike.js.haml'
+    render layout: false, partial: 'shared/like_unlike.js.haml'
   end
 
   private

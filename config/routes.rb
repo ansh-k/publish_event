@@ -11,7 +11,12 @@ Rails.application.routes.draw do
         put 'like' => 'locations#like'
         put 'unlike' => 'locations#unlike'
       end
-      resources :comments
+      resources :comments do
+        member do
+          put 'like' => 'comments#like'
+          put 'unlike' => 'comments#unlike'
+        end
+      end
     end
     
     resources :events do

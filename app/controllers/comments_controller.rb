@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class CommentsController < ApplicationController
+  include VotingController
   before_action :find_commentable, :authenticate_user!
 
   def create
