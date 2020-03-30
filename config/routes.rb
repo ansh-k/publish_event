@@ -7,6 +7,10 @@ Rails.application.routes.draw do
 
   resources :users, shallow: true do
     resources :locations do
+      member do
+        put 'like' => 'locations#like'
+        put 'unlike' => 'locations#unlike'
+      end
       resources :comments
     end
     

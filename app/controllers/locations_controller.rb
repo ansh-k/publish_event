@@ -1,4 +1,5 @@
 class LocationsController < ApplicationController
+  include VotingController
   before_action :authenticate_user!
   before_action :set_location, only: [:edit, :update, :destroy]
 

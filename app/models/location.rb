@@ -13,6 +13,7 @@ class Location < ApplicationRecord
                   with: /\A\d{5}-\d{4}|\A\d{5}\z/,
                   message: "should be 12345 or 12345-1234",
                   allow_blank: false
+  acts_as_votable
 
 
   def full_address
