@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class EventsController < ApplicationController
+  include VotingController
   before_action :authenticate_user!
   before_action :set_user_event, only: %i[edit update destroy]
 
@@ -55,8 +56,6 @@ class EventsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
-  
 
   private
 
