@@ -1,0 +1,3 @@
+:plain
+  document.querySelector("#like-count-#{@object.id}").innerText = "#{@object.get_upvotes.size}"
+  document.querySelector("#unlike-count-#{@object.id}").innerText = "#{@object.get_downvotes.size}"  
