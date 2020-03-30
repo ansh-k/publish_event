@@ -11,23 +11,22 @@ Rails.application.routes.draw do
         put 'like' => 'locations#like'
         put 'unlike' => 'locations#unlike'
       end
-      resources :comments do
-        member do
-          put 'like' => 'comments#like'
-          put 'unlike' => 'comments#unlike'
-        end
-      end
-    end
-    
-    resources :events do
-      resources :rates, only: [] do
-        collection do
-          post :like
-          post :unlike
-        end  
-      end
-        
       resources :comments
+    end
+
+    resources :events do
+      member do
+        put 'like' => 'events#like'
+        put 'unlike' => 'events#unlike'
+      end
+      resources :comments
+    end
+
+    resources :comments do
+      member do
+        put 'like' => 'comments#like'
+        put 'unlike' => 'comments#unlike'
+      end
     end
   end
 
